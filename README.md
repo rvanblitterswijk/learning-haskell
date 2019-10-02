@@ -59,7 +59,18 @@ Looking at these 2 files there is already a lot that I learned.
 - Function declaration is a lot different than in imperative languages. The name of the function is followed by an `=`.
 - Return types don't have to be declared. (in the helloworld function)
 - Modules can declare which functions they export. This feels similar to private and public functions in imperative programming languages.
+- Haskell has standard functions as well like `putStrln`.
 
 Now with my setup done it was time to truly dive into the book.
+
+#### Haskell is lazy and statically typed
+The book began with explaining types (`int`, `bool`, 'char') lists and operators. This part was quite simple and obvious for people with programming experience so I won't go into detail here.
+Some interesting things to mention here though is that Haskell is a **lazy** programming language. This means that Haskell won't execute functions and calculate tings unless it is really forced to. This allows you to use things like infinite lists in functions (because it will only use the values in that list that it needs). Haskell is also **statically typed**, which means that when you compile the program, Haskell knows which type each piece of information is. So we don't have to state types everywhere (like we have to do in Java for example), which means something like `a = 5 + 4` is possible.
+
+#### Lists and tuples
+Lists are very interesting in Haskell. Like I said infinite lists are actually a thing because Haskell is lazy. Creating lists can also be done much quicker than in imperative languages by using `..` in `[2..10]` for example. Haskell is smart enough to fill in the rest of the list. This also works in `[2,4..10 ]` which fills the list with only even ints.
+An interesting aspect about Haskell's lists is **list comprehensions**. This allows you to perform a certain expression on each value in the list like this : `[x&#42;2 | x <- [1..10]]`
+
+
 
 
