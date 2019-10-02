@@ -1,8 +1,6 @@
 # learning-haskell
 A repository made to document my haskell learning journey
 
-## Local setup
-
 ## The project
 ### My goal
 During the course ASD-APP it is required of the students to show that they posses the ability to learn a new programming language by themselves. During this process it is important to learn 2 things: how to learn an unfamiliar programming paradigm and how to share the attained knowledge with peers. 
@@ -99,8 +97,21 @@ length' (_:xs) = 1 + length' xs
 There is a lot of information to gather from this code block. This is a function that return the length of a list. The function is of a type that is a part of the `Num` typeclass (the `b` is the last parameter). It also gets an `[a]` as parameter, which is a list with values that can be of any type because `a` is not a part of any typeclass here.
 By using pattern matching several scenarios can be handled with minimal text in Haskell. In this code block: 
 - If `[a]` is an `[]` (empty list) then `b` will be 0 (e.g. length' will be 0. 0 is an int which is a part of the Num typeclass).
-- It is important to understand that `(_:xs)` is the same as `[a]`. Because `(_:xs)` is the first parameter just like `[a]`. Doing `:` in between a value and a list means to append that value to the front of a list in Haskell. `_` means that it doesn't matter what that part is. So `(_:xs)` means that we turn `[a]` into a tuple, the first value (it doesn't matter what type it is) is on the `_` spot and the rest of the list is after the `:` in the `xs`. This was we can use `xs` in later parts in our function like we do here.
+- It is important to understand that `(_:xs)` is the same as `[a]`. Because `(_:xs)` is the first parameter just like `[a]`. Doing `:` in between a value and a list means to append that value to the front of a list in Haskell. `_` means that it doesn't matter what that part is. So `(_:xs)` means that we turn `[a]` into a tuple, the first value (it doesn't matter what type it is) is on the `_` spot and the rest of the list is after the `:` in the `xs`. This `xs` we can use in a later part of our function like we do here.
 - If `[a]` is a list then `b` will be `1 + length' xs`. 
+
+#### Recursion
+Because Haskell is a functional programming language it does not use for or while loops like in imperative languages. To make sure a function runs for a certain amount of iterations recursion has to be used. An example of a Haskell recursive function that uses the quicksort algorithm:
+```Haskell
+quicksort :: (Ord a) => [a] -> [a]  
+quicksort [] = []  
+quicksort (x:xs) =   
+    let smallerSorted = quicksort [a | a <- xs, a <= x]  
+        biggerSorted = quicksort [a | a <- xs, a > x]  
+    in  smallerSorted ++ [x] ++ biggerSorted
+```
+Like in all recursive functions the edge scenario `[]` is defined first. After that the actually quicksorting is defined. The `smallerSorted` (which is an list of all items smaller than `x` in `(x:xs)`) is added to `[x]` which in turn is added to `biggerSorted` (which is an list of all items bigger than `x` in `(x:xs)`). To get all items smaller/bigger quicksort is performed recursively on the `xs` in `(x:xs)`. 
+`let` bindings are used in Haskell to bind expressions to variables. They are always followed by an `in` which defines the scope of this variable.
 
 
 
