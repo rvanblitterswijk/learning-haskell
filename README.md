@@ -35,7 +35,7 @@ Stack uses a directory setup similar to Maven. It uses an *app*, *source* and a 
 
 So the introduction of the only difference with Maven here is that the executables should be put in the app folder.
 
-Looking at my hello world project there are 2 files. app/Main.hs:
+Looking at my hello world project there are 2 files. **app/Main.hs**:
 ```Haskell
 module Main where
 
@@ -44,7 +44,7 @@ import Lib
 main :: IO ()
 main = putStrLn helloworld
 ```
-and src/Lib.hs:
+and **src/Lib.hs**:
 ```Haskell
 module Lib
     (
@@ -53,5 +53,9 @@ module Lib
     
 helloworld = "Hello world!"
 ```
+Looking at these 2 files there is already a lot that I learned.
+- Haskell code is split up into several .hs files. Each file is a "module". 
+- Modules can import each other to use their functions.
+- Function declaration is a lot different than in imperative languages. The name of the function is followed by an `=`.
 
 
