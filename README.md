@@ -32,6 +32,7 @@ After setting this up I wanted to make sure I used a professional Haskell build 
 Stack uses a directory setup similar to Maven. It uses an *app*, *source* and a *test* folder. Stack states the following about the folders:
 - > The app directory should preferably contain only files related to executables. 
 - > Edit files in the src/ directory. 
+
 So the introduction of the only difference with Maven here is that the executables should be put in the app folder.
 
 Looking at my hello world project there are 2 files. app/Main.hs:
