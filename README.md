@@ -69,7 +69,11 @@ Some interesting things to mention here though is that Haskell is a **lazy** pro
 
 #### Lists and tuples
 Lists are very interesting in Haskell. Like I said infinite lists are actually a thing because Haskell is lazy. Creating lists can also be done much quicker than in imperative languages by using `..` in `[2..10]` for example. Haskell is smart enough to fill in the rest of the list. This also works in `[2,4..10 ]` which fills the list with only even ints.
-An interesting aspect about Haskell's lists is **list comprehensions**. This allows you to perform a certain expression on each value in the list like this : `[x`<code>&ast;</code>`2 | x <- [1..10]]`
+An interesting aspect about Haskell's lists is **list comprehensions**. This allows you to perform a certain expression on each value in the list like this : `[x`<code>&ast;</code>`2 | x <- [1..10]]` where each value in the list is multiplied by 2. Because Haskell is statically typed this produces a new list of ints with each result.
+An alternative to lists in Haskell are **tuples**. Tuples are like lists and they are defined by parentheses like this: `(11, 'A')`. However they follow some different rules than lists: 
+1. Tuples have a predefined length that cannot be changed.
+2. Tuples can contain multiple values of different types.
+It is also possible to have lists of tuples, but because lists can only contain values of the same type each tuple in the list will need to have the same amount of values that are of the same type(s). So while this is allowed: `[('A', 11, 12), ('G', 45, 74), ('Y', 1, 91)]`, this is not: [('A', 11, 12), ('G', 45), (23)]` because the tuples are of different types.
 
 
 
