@@ -91,3 +91,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 learning-haskell-code/.idea/workspace.xml
 learning-haskell-code/.idea/workspace.xml
+learning-haskell-code/learning-haskell.cabal
+learning-haskell-code/.idea/workspace.xml

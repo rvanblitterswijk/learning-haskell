@@ -87,7 +87,7 @@ A typeclass is a kind of interface that defines some behavior. Types in Haskell 
 ```Haskell
 (==) :: (Eq a) => a -> a -> Bool
 ```
-We see that this functions takes 2 parameters that are of a type that adheres to the Eq typeclass and it returns a Bool. So typeclasses are very useful for defining functions that can take parameters that need to support a specific kind of behavior, but don't have to be of a specific type. 
+We see that this functions takes 2 parameters that are of a type that adheres to the Eq typeclass (the 2 a's) and it returns a Bool. So typeclasses are very useful for defining functions that can take parameters that need to support a specific kind of behavior, but don't have to be of a specific type. 
 
 
 
