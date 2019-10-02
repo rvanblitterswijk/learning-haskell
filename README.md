@@ -73,7 +73,7 @@ An interesting aspect about Haskell's lists is **list comprehensions**. This all
 An alternative to lists in Haskell are **tuples**. Tuples are like lists and they are defined by parentheses like this: `(11, 'A')`. However they follow some different rules than lists: 
 1. Tuples have a predefined length that cannot be changed.
 2. Tuples can contain multiple values of different types.
-It is also possible to have lists of tuples, but because lists can only contain values of the same type each tuple in the list will need to have the same amount of values that are of the same type(s). So while this is allowed: `[('A', 11, 12), ('G', 45, 74), ('Y', 1, 91)]`, this is not: [('A', 11, 12), ('G', 45), (23)]` because the tuples are of different types.
+It is also possible to have lists of tuples, but because lists can only contain values of the same type each tuple in the list will need to have the same amount of values that are of the same type(s). So while this is allowed: `[('A', 11, 12), ('G', 45, 74), ('Y', 1, 91)]`, this is not: `Haskell [('A', 11, 12), ('G', 45), (23)]` because the tuples are of different types.
 
 
 
