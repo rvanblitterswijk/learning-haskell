@@ -69,7 +69,7 @@ Some interesting things to mention here though is that Haskell is a **lazy** pro
 
 #### Lists and tuples
 Lists are very interesting in Haskell. Like I said infinite lists are actually a thing because Haskell is lazy. Creating lists can also be done much quicker than in imperative languages by using `..` in `[2..10]` for example. Haskell is smart enough to fill in the rest of the list. This also works in `[2,4..10 ]` which fills the list with only even ints.
-An interesting aspect about Haskell's lists is **list comprehensions**. This allows you to perform a certain expression on each value in the list like this : `[x &#42; 2 | x <- [1..10]]`
+An interesting aspect about Haskell's lists is **list comprehensions**. This allows you to perform a certain expression on each value in the list like this : `[x&ast;2 | x <- [1..10]]`
 
 
 
