@@ -96,9 +96,9 @@ length' :: (Num b) => [a] -> b
 length' [] = 0  
 length' (_:xs) = 1 + length' xs
 ```
-There is a lot of information to gather from this code block. This is a function that return the length of a list. The function is of a type that is a part of the `Num` typeclass (the b is the last parameter). It also gets an `[a]` as parameter, which is a list with values that can be of any type because a is not a part of any typeclass here.
+There is a lot of information to gather from this code block. This is a function that return the length of a list. The function is of a type that is a part of the `Num` typeclass (the `b` is the last parameter). It also gets an `[a]` as parameter, which is a list with values that can be of any type because `a` is not a part of any typeclass here.
 By using pattern matching several scenarios can be handled with minimal text in Haskell. In this code block: 
-- If `[a]` is an `[]` (empty list) then `b` will be 0 (e.g. length' will be 0).
+- If `[a]` is an `[]` (empty list) then `b` will be 0 (e.g. length' will be 0. 0 is an int which is a part of the Num typeclass).
 - It is important to understand that `(_:xs)` is the same as `[a]`. Because `(_:xs)` is the first parameter just like `[a]`. Doing `:` in between a value and a list means to append that value to the front of a list in Haskell. `_` means that it doesn't matter what that part is. So `_:xs` means that we split `[a]` into 2 parts, the first value (it doesn't matter what type it is) is on the `_` spot and the rest of the list is after the `:` in the `xs`. This was we can use `xs` in later parts in our function like we do here.
 - If `[a]` is a list then `b` will be `1 + length' xs`. 
 
