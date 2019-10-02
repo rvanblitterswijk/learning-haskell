@@ -57,5 +57,9 @@ Looking at these 2 files there is already a lot that I learned.
 - Haskell code is split up into several .hs files. Each file is a "module". 
 - Modules can import each other to use their functions.
 - Function declaration is a lot different than in imperative languages. The name of the function is followed by an `=`.
+- Return types don't have to be declared. (in the helloworld function)
+- Modules can declare which functions they export. This feels similar to private and public functions in imperative programming languages.
+
+Now with my setup done it was time to truly dive into the book.
 
 
