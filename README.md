@@ -113,6 +113,28 @@ quicksort (x:xs) =
 Like in all recursive functions the edge scenario `[]` is defined first. After that the actually quicksorting is defined. The `smallerSorted` (which is an list of all items smaller than `x` in `(x:xs)`) is added to `[x]` which in turn is added to `biggerSorted` (which is an list of all items bigger than `x` in `(x:xs)`). To get all items smaller/bigger quicksort is performed recursively on the `xs` in `(x:xs)`. 
 `let` bindings are used in Haskell to bind expressions to variables. They are always followed by an `in` which defines the scope of this variable.
 
+#### Input and output 
+In imperative programming I have learned that your program is essentially a list of steps for your computer to execute. These steps usually involve changing what the value of some variable is. Since Haskell is a functional programming language, you can't change the state of variables. What you can do is run functions that always give back the same result based on the parameter that we give it. 
+The fact that functions can't change is a good thing because it makes it easier to reason about the programs. However, if the function can't change anything, how can it tell you what it has calculated? 
+Haskell has a nice separation of the "impure" part (the part that communicates with the keyboard and the screen) and the "pure" part (the part that has all the advantages purity offers like laziness, robustness and modularity), so that we can use the best of both worlds.
+To handle input and output (the "impure" part of programs in Haskell) Haskell uses **I/O actions**. An I/O action is something that carries out an action with a side-effect (printing stuff to or reading from the screen) and that has a return value. If an I/O action doesn't have a meaningful return value, the empty tuple `()` is used. An example of an I/O action with a valid return value is the `getLine` action using the `:t` functions we can check out its return type:
+```Haskell
+Prelude> :t getLine
+getLine :: IO String
+```
+I/O action will be performed when we give it to the function called `main` and we run the program. To perform multiple I/O actions in a main function you need to use the `do` syntax to glue several functions together.
+```Haskell 
+main = do  
+    putStrLn "Hello, what should I call you?"  
+    name <- getLine  
+    putStrLn ("Hey " ++ name ++ ", how are you doing?")
+```
+An interesting line in this piece of code is the `name <- getLine` line. getLine is an I/O action with a return type of `String` (basically `[Char]` in Haskell). You can bind the return value out of an I/O action to name using the `<-` construct. If you take data out of an I/O action you always need to use the `<-` construct. 
+
+
+
+
+
 
 
 
