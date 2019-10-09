@@ -131,6 +131,17 @@ main = do
 ```
 An interesting line in this piece of code is the `name <- getLine` line. getLine is an I/O action with a return type of `String` (basically `[Char]` in Haskell). You can bind the return value out of an I/O action to name using the `<-` construct. If you take data out of an I/O action you always need to use the `<-` construct. 
 
+#### Input arguments
+In Haskell you can use input arguments to make sure Haskell knows what values parameters should have without needing to ask you once it is already running. 	The `System.Environment` has useful I/O actions for this purpose:
+```Haskell
+Prelude> :t getLine
+getArgs :: IO [String]
+Prelude> :t getProgName
+getProgName :: IO String
+```
+`getArgs` is a function that returns a `IO [String]` of all the Strings that were given as arguments after the program has been called.
+`getProgName` is a functions that returns a `IO String`, this `String` is the program name.
+
 
 
 
