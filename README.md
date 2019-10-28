@@ -140,7 +140,10 @@ Prelude> :t getProgName
 getProgName :: IO String
 ```
 `getArgs` is a function that returns a `IO [String]` of all the Strings that were given as arguments after the program has been called.
-`getProgName` is a functions that returns a `IO String`, this `String` is the program name.
+`getProgName` is a function that returns a `IO String`, this `String` is the program name.
+
+
+
 
 
 

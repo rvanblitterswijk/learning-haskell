@@ -3,7 +3,4 @@ module Main where
 import Lib
 
 main :: IO ()
-main = putStrLn helloworld
-
-
-
+main = someFunc

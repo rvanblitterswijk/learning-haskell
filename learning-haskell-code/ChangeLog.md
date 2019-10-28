@@ -1,3 +1,3 @@
-# Changelog for learning-haskell
+# Changelog for learning-haskell-bussen
 
 ## Unreleased changes

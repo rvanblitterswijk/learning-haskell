@@ -1,1 +1,1 @@
-# learning-haskell
+# learning-haskell-bussen
