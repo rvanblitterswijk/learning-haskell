@@ -25,33 +25,10 @@ When I started to learn Haskell I was very happy with the extensive documentatio
 Out of all the books on the documentation page I decided to choose ["Learn you a haskell for great good!"](http://learnyouahaskell.com/). Because this book has a very down to earth vibe when skimming through it. Its target audience is also people who already have experience with imperative programming, but who have not worked with functional programming yet. Which fit my profile perfectly. 
 
 #### The first steps
-When I started reading the book I noticed the author would use the GHC (Glasgow Haskell Compiler) which is the most widely used Haskell compiler. The author uses the GHCi (the interactive version of the compiler)to test small snippets of code to start out the learning journey. I decided that I wanted a more serious setup than just my command prompt to start out so I set out on my own to find a more professional alternative. I decided to do my script editing in IntelliJ because this is an IDE that I am very familiar with and it has a [Haskell plugin](https://plugins.jetbrains.com/plugin/8258-intellij-haskell). 
-After setting this up I wanted to make sure I used a professional Haskell build tool (like Maven which I have learned about in the OOSE-DEA course). After surfing the Internet I found [Stack](https://docs.haskellstack.org/en/stable/README/), which is used to install the GHC and package needed in your project, building, testing and benchmarking your project. Perfect!
-Stack uses a directory setup similar to Maven. It uses an *app*, *source* and a *test* folder. Stack states the following about the folders:
-- > The app directory should preferably contain only files related to executables. 
-- > Edit files in the src/ directory. 
+When I started reading the book I noticed the author would use the GHC (Glasgow Haskell Compiler) which is the most widely used Haskell compiler. The author uses the GHCi (the interactive version of the compiler)to test small snippets of code to start out the learning journey. I decided that I wanted to use a code editor right from the start because that is what I am most familiar with and I dislike trying out code snippets in the command line.
+I decided to use Visual studio code with the [haskell plugin](https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell) to make my haskell files (.hs).
 
-So the introduction of the only difference with Maven here is that the executables should be put in the app folder.
-
-Looking at my hello world project there are 2 files. **app/Main.hs**:
-```Haskell
-module Main where
-
-import Lib
-
-main :: IO ()
-main = putStrLn helloworld
-```
-and **src/Lib.hs**:
-```Haskell
-module Lib
-    (
-    helloworld
-    ) where
-    
-helloworld = "Hello world!"
-```
-Looking at these 2 files there is already a lot that I learned.
+Looking at some hello world setups online there were a lot of things I learned about Haskell projects.
 - Haskell code is split up into several .hs files. Each file is a "module". 
 - Modules can import each other to use their functions.
 - Function declaration is a lot different than in imperative languages. The name of the function is followed by an `=`.
@@ -59,7 +36,7 @@ Looking at these 2 files there is already a lot that I learned.
 - Modules can declare which functions they export. This feels similar to private and public functions in imperative programming languages.
 - Haskell has standard functions as well like `putStrln`.
 
-Now with my setup done it was time to truly dive into the book.
+So with my visual studio code and GHC ready it was time to truly dive into the book.
 
 #### Haskell is lazy and statically typed
 The book began with explaining types (`Int`, `Bool`, 'Char') lists and operators. This part was quite simple and obvious for people with programming experience so I won't go into detail here.
