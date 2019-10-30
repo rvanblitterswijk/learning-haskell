@@ -1,13 +1,43 @@
 module Card 
 (
-    deck,
-    makePlayersAndInventories
+    fullDeck,
+    makePlayersAndInventories,
+    givePlayerCard,
+    givePlayersFirstCard
 ) where
 
-deck :: [(String, String)]
-deck = [("A", "Hearts"), ("2", "Hearts"), ("3", "Hearts"), ("4", "Hearts"), ("5", "Hearts"), ("6", "Hearts"), ("7", "Hearts"), ("8", "Hearts"), ("9", "Hearts"), ("10", "Hearts"), ("J", "Hearts"), ("Q", "Hearts"), ("K", "Hearts"), ("A", "Tiles"), ("2", "Tiles"), ("3", "Tiles"), ("4", "Tiles"), ("5", "Tiles"), ("6", "Tiles"), ("7", "Tiles"), ("8", "Tiles"), ("9", "Tiles"), ("10", "Tiles"), ("J", "Tiles"), ("Q", "Tiles"), ("K", "Tiles"), ("A", "Clovers"), ("2", "Clovers"), ("3", "Clovers"), ("4", "Clovers"), ("5", "Clovers"), ("6", "Clovers"), ("7", "Clovers"), ("8", "Clovers"), ("9", "Clovers"), ("10", "Clovers"), ("J", "Clovers"), ("Q", "Clovers"), ("K", "Clovers"), ("A", "Spades"), ("2", "Spades"), ("3", "Spades"), ("4", "Spades"), ("5", "Spades"), ("6", "Spades"), ("7", "Spades"), ("8", "Spades"), ("9", "Spades"), ("10", "Spades"), ("J", "Spades"), ("Q", "Spades"), ("K", "Spades")]
+import System.Random
 
-makePlayersAndInventories :: [String] -> [(String, String)] -> [(String, (String, String))]
+fullDeck :: [(String, String)]
+fullDeck = [("A", "hearts"), ("2", "hearts"), ("3", "hearts"), ("4", "hearts"), ("5", "hearts"), ("6", "hearts"), ("7", "hearts"), ("8", "hearts"), ("9", "hearts"), ("10", "hearts"), ("J", "hearts"), ("Q", "hearts"), ("K", "hearts"), ("A", "tiles"), ("2", "tiles"), ("3", "tiles"), ("4", "tiles"), ("5", "tiles"), ("6", "tiles"), ("7", "tiles"), ("8", "tiles"), ("9", "tiles"), ("10", "tiles"), ("J", "tiles"), ("Q", "tiles"), ("K", "tiles"), ("A", "clovers"), ("2", "clovers"), ("3", "clovers"), ("4", "clovers"), ("5", "clovers"), ("6", "clovers"), ("7", "clovers"), ("8", "clovers"), ("9", "clovers"), ("10", "clovers"), ("J", "clovers"), ("Q", "clovers"), ("K", "clovers"), ("A", "spades"), ("2", "spades"), ("3", "spades"), ("4", "spades"), ("5", "spades"), ("6", "spades"), ("7", "spades"), ("8", "spades"), ("9", "spades"), ("10", "spades"), ("J", "spades"), ("Q", "spades"), ("K", "spades")]
+
+makePlayersAndInventories :: [String] -> [(String, String)] -> [(String, [(String, String)])]
 makePlayersAndInventories [] _ = [] 
-makePlayersAndInventories _ [] = []  
-makePlayersAndInventories (x:xs) (y:ys) = (x, y):makePlayersAndInventories xs ys
+makePlayersAndInventories (x:xs) (y:ys) = (x, []):makePlayersAndInventories xs ys
+
+givePlayerCard :: [(String, [(String, String)])] -> (String, String) -> String -> [(String, [(String, String)])]
+givePlayerCard [] _ _ = []
+givePlayerCard  (  ( name, cards )  : otherPlayers ) cardToAdd nameToAdd = 
+    if (name == nameToAdd)
+        then
+            ( name, cardToAdd:cards ):(givePlayerCard otherPlayers cardToAdd nameToAdd )
+        else
+           (name, cards):(givePlayerCard otherPlayers cardToAdd nameToAdd)
+
+pullRandomCard :: [(String, String)] -> IO ((String, String), [(String, String)])
+pullRandomCard deck = do
+    randomCardIndex <- randomRIO (0, length deck - 1)
+    let pulledCard = deck !! randomCardIndex
+        deckPartBefore = take randomCardIndex deck
+        deckPartAfter = drop (randomCardIndex + 1) deck
+    let newDeck = deckPartBefore ++ deckPartAfter
+    return (pulledCard, newDeck)
+
+givePlayersFirstCard :: [(String, [(String, String)])] -> [String] -> [(String, String)] -> IO ([(String, String)], [(String, [(String, String)])]) --Returns (Deck, State)
+givePlayersFirstCard state [] deck = return (deck, state)
+givePlayersFirstCard state (player:otherPlayers) deck = do
+    pulledCardAndDeck <- pullRandomCard deck
+    let newDeck = (snd pulledCardAndDeck)
+    let pulledCard = (fst pulledCardAndDeck)
+    let newState = givePlayerCard state pulledCard player
+    givePlayersFirstCard newState otherPlayers newDeck
