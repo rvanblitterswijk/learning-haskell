@@ -47,6 +47,7 @@ main = do
 
     putStrLn "~~The end~~"
     input <- getLine
+    putStrLn ""
     
 
 compareAnswersQ4 :: [(String, [(String, String)])] -> [(String, String)] -> IO() --State, Answers 
