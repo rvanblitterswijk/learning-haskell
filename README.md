@@ -125,6 +125,18 @@ getProgName :: IO String
 `getArgs` is a function that returns a `IO [String]` of all the Strings that were given as arguments after the program has been called.
 `getProgName` is a function that returns a `IO String`, this `String` is the program name.
 
+### The challenge
+As a Haskell programming challenge I decided to create a drinking game. In this game 1 to x players can join. The game involves a deck of cards. The same deck will be used throughout the game. The game will first ask the names of each player. After the names of all players are known the game will start.
+Each player will be asked a question about the next card that will be pulled and given to them. This card is a random card pulled from a deck of 52 regular playing cards. If the player guesses correctly they don't have to drink, if they're incorrect they need to take a sip.
+This process will repeat with a total of 4 questions for each player. The deck of cards will be updated with each card that is handed out, so no 2 players can be given the same card and one player cannot be given the same card twice. 
+The game can be played with any number of players which can be entered by the user.
+
+### The challenge and Haskell
+The challenge uses a wide array of concepts that have a lot to do with Haskell. Functions, variables, IO, pattern matching, lists, tuples, types, recursion etc. A big challenge in this game for functional paradigms is to persistently store the deck of cards and to remember which cards have been given away to players and which cards are still in the deck.
+
+### Conclusion
+Learning my first programming language that is based on a functional paradigm was a big challenge. It requires a different way of thinking about problems to effectively solve them. Throughout my learning journey I have documented the many things about Haskell that I have learned. To me functional programming is still reasonably difficult to comprehend at times. I find myself thinking about quite simple issues a lot more and a lot longer than I would when programming imperatively. I do feel like it is a very good paradigm if you want to write short and clean code, although I do feel like it is a lot harder to read. I think that for large programs Haskell isn't as good of an option compared to imperative languages like Java or C#. But I do feel like Haskell is a great option for mathematical parts of a system that involve a lot of calculations. 
+
 
 
 
