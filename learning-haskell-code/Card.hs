@@ -3,7 +3,7 @@ module Card
     fullDeck,
     makePlayersAndInventories,
     givePlayerCard,
-    givePlayersFirstCard
+    givePlayersOneCard
 ) where
 
 import System.Random
@@ -33,11 +33,12 @@ pullRandomCard deck = do
     let newDeck = deckPartBefore ++ deckPartAfter
     return (pulledCard, newDeck)
 
-givePlayersFirstCard :: [(String, [(String, String)])] -> [String] -> [(String, String)] -> IO ([(String, String)], [(String, [(String, String)])]) --Returns (Deck, State)
-givePlayersFirstCard state [] deck = return (deck, state)
-givePlayersFirstCard state (player:otherPlayers) deck = do
+givePlayersOneCard :: [(String, [(String, String)])] -> [String] -> [(String, String)] -> IO ([(String, String)], [(String, [(String, String)])]) --Returns (Deck, State)
+givePlayersOneCard state [] deck = return (deck, state)
+givePlayersOneCard state (player:otherPlayers) deck = do
     pulledCardAndDeck <- pullRandomCard deck
     let newDeck = (snd pulledCardAndDeck)
     let pulledCard = (fst pulledCardAndDeck)
     let newState = givePlayerCard state pulledCard player
-    givePlayersFirstCard newState otherPlayers newDeck
+    givePlayersOneCard newState otherPlayers newDeck
+
