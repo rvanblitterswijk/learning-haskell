@@ -1,6 +1,12 @@
 # learning-haskell
 A repository made to document my haskell learning journey
 
+## The product
+### Local setup
+1. Download the [Glasgow Haskell Compiler](https://www.haskell.org/ghc/) (GHC).
+2. Clone this repository.
+3. Open command prompt at learning-haskell/learning-haskell-code and run `cabal install random`.
+4. run `runhaskell Main.hs` at the same location.
 ## The project
 ### My goal
 During the course ASD-APP it is required of the students to show that they posses the ability to learn a new programming language by themselves. During this process it is important to learn 2 things: how to learn an unfamiliar programming paradigm and how to share the attained knowledge with peers. 
